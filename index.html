@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人简历</title>
+
+  <!-- 图标库（本地托管，国内访问稳定） -->
+  <link rel="stylesheet" href="font-awesome/css/all.min.css">
+
+  <!-- 自定义样式 -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- 打印样式（仅打印 / 导出 PDF 时生效） -->
+  <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+
+  <!-- 纹理背景层 -->
+  <div class="bg-texture"></div>
+
+  <!-- 浮动光斑装饰（纯CSS） -->
+  <div class="floating-orb orb-1"></div>
+  <div class="floating-orb orb-2"></div>
+  <div class="floating-orb orb-3"></div>
+
+  <!-- ============================================================ -->
+  <!--  装饰元素层（右上角半透明花卉/枝叶）                         -->
+  <!-- ============================================================ -->
+  <div class="decorations">
+    <img class="deco deco-top-right" src="image.1.png" alt="装饰">
+  </div>
+
+  <!-- ============================================================ -->
+  <!--  1. 封面页 (Cover Page)                                      -->
+  <!-- ============================================================ -->
+  <section id="cover" class="page cover-page active">
+    <div class="cover-content">
+      <h1 class="cover-title">✨ 个人简历 ✨</h1>
+      <p class="cover-subtitle">Personal Resume</p>
+      <button class="btn btn-enter" onclick="navigateTo('toc')">
+        点击进入简历 <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--  2. 目录页 (Table of Contents)                               -->
+  <!-- ============================================================ -->
+  <section id="toc" class="page toc-page">
+    <h2 class="section-title">📋 目录</h2>
+    <p class="section-subtitle">选择你想了解的模块</p>
+
+    <div class="toc-grid">
+      <!-- 模块1 -->
+      <div class="toc-card" onclick="navigateTo('module1')">
+        <div class="toc-icon"><i class="fas fa-user"></i></div>
+        <h3>个人简介</h3>
+        <p>基本信息 / 技能 / 证书 / 个人优势</p>
+      </div>
+
+      <!-- 模块2 -->
+      <div class="toc-card" onclick="navigateTo('module2')">
+        <div class="toc-icon"><i class="fas fa-star"></i></div>
+        <h3>能力展示</h3>
+        <p>社媒运营 / 设计排版 / 文案写作 / 拍摄剪辑</p>
+      </div>
+
+      <!-- 模块3 -->
+      <div class="toc-card" onclick="navigateTo('module3')">
+        <div class="toc-icon"><i class="fas fa-heart"></i></div>
+        <h3>其他</h3>
+        <p>志愿活动 / 兴趣爱好 / 音乐</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================ -->
+  <!--  3. 模块1：个人简介                                          -->
+  <!-- ============================================================ -->
+  <section id="module1" class="page module-page">
+    <h2 class="section-title">👤 个人简介</h2>
+
+    <!-- 基本信息区：照片在中间，信息分两侧 -->
+    <div class="profile-grid">
+      <!-- 左侧信息 -->
+      <div class="profile-info profile-left">
+        <div class="info-item"><span class="info-label">姓名</span><span class="info-value">赵铭兮</span></div>
+        <div class="info-item"><span class="info-label">学校</span><span class="info-value">武汉大学</span></div>
+        <div class="info-item"><span class="info-label">专业</span><span class="info-value">世界史</span></div>
+      </div>
+
+      <!-- 中间照片 -->
+      <div class="profile-photo">
+        <img class="profile-avatar" src="%E4%B8%AA%E4%BA%BA%E7%85%A7%E7%89%87.jpg" alt="赵铭兮" onerror="this.outerHTML='<div class=photo-placeholder><i class=\'fas fa-user-circle\'></i><span>个人照片</span></div>'">
+      </div>
+
+      <!-- 右侧信息 -->
+      <div class="profile-info profile-right">
+        <div class="info-item"><span class="info-label">毕业时间</span><span class="info-value">2027年06月</span></div>
+        <div class="info-item"><span class="info-label">电话</span><span class="info-value">177-9826-2749</span></div>
+        <div class="info-item"><span class="info-label">邮箱</span><span class="info-value">2031695159@qq.com</span></div>
+      </div>
+    </div>
+
+    <!-- 个人技能区：三部分 -->
+    <div class="skills-section">
+      <h3>📌 个人技能</h3>
+      <div class="skills-grid">
+        <!-- 办公软件技能 -->
+        <div class="skill-card">
+          <h4><i class="fas fa-laptop"></i> 办公软件技能</h4>
+          <ul>
+            <li>能高效运用 Office 完成数据处理与文档制作</li>
+            <li>借助 Canva 和秀米快速产出优质排版</li>
+            <li>擅长使用 Ps、Pr 进行视觉设计与视频剪辑</li>
+            <li>具备 Vibe Coding 能力，可将编程思维融入办公与内容创作流程</li>
+          </ul>
+        </div>
+        <!-- 已获证书 -->
+        <div class="skill-card">
+          <h4><i class="fas fa-certificate"></i> 已获证书</h4>
+          <ul>
+            <li>大学英语六级（CET-6）</li>
+            <li>法语 TFU-4</li>
+            <li>计算机二级</li>
+            <li>普通话二级乙等</li>
+            <li>腾讯2025开局一课 — 游戏运营方向结业证书</li>
+            <li>腾讯未来产品经理创造营证书</li>
+          </ul>
+        </div>
+        <!-- 个人优势 -->
+        <div class="skill-card">
+          <h4><i class="fas fa-thumbs-up"></i> 个人优势</h4>
+          <ul>
+            <li>具备公众号全流程运营及活动策划落地经验</li>
+            <li>擅长选题策划、文案创作、图文排版与跨部门协作</li>
+            <li>作为多款游戏的深度用户，熟悉年轻圈层文化</li>
+            <li>善于捕捉流行趋势与用户需求</li>
+            <li>学习主动，工作细致踏实</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部导航按钮 -->
+    <div class="bottom-nav">
+      <button class="btn btn-back" onclick="navigateTo('toc')">
+        <i class="fas fa-arrow-left"></i> 返回目录
+      </button>
+      <button class="btn btn-next" onclick="navigateTo('module2')">
+        下一章节：能力展示 <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--  4. 模块2：能力展示                                          -->
+  <!-- ============================================================ -->
+  <section id="module2" class="page module-page">
+    <h2 class="section-title">⭐ 能力展示</h2>
+
+    <!-- (1) 运营 - 社媒作品 -->
+    <div class="sub-module" id="social-media">
+      <h3>运营 · 社媒作品 — 小红书</h3>
+      <p style="color:var(--text-gray);font-size:0.9rem;margin-bottom:18px;">
+        账号定位：<strong>生活记录</strong> ｜ 最高流量帖子主题：<strong>追星</strong>
+      </p>
+      <div class="social-media-content">
+        <!-- 左侧：运营分析 -->
+        <div class="social-analysis">
+          <h4>📊 运营分析</h4>
+          <div class="analysis-scroll">
+            <div class="analysis-item"><strong>数据表现：</strong>本篇收获<strong>1.1万浏览、243点赞</strong>，为账号内流量最佳帖子。结合个人真实体验创作随笔式文案，搭配细分文娱话题标签，精准触达同好圈层与泛韩娱用户。</div>
+            <div class="analysis-item"><strong>对比早期复盘：</strong>早期使用趣味表情包作封面，风格轻松但视觉冲击弱、辨识度不足；本次改用明确团员合照 + 悬念式标题，点击率大幅提升。内容上优化深度、标题与标签组合，<strong>曝光量提升近4倍</strong>，内容质量与传播力明显升级。</div>
+            <div class="analysis-item"><strong>不足反思：</strong>1）配图仅1张，视觉层次单薄；2）文案偏纯个人观点输出，缺少互动引导，评论数据下滑；3）内容形式单一，缺少分段排版与表情符号点缀；4）纯图文形式缺少动态画面与舞台原声，在短视频优先的平台环境下传播力受限。</div>
+            <div class="analysis-item"><strong>复盘总结：</strong>结合真实体验输出差异化内容 + 优化封面视觉与标题设计 + 绑定热门话题搭配精准标签 = 有效扩大曝光。后续将增加配图丰富视觉层次，优化排版细节，加入互动引导，并尝试图文+短视频结合创作，兼顾流量曝光、内容质感与用户互动。</div>
+          </div>
+        </div>
+        <!-- 右侧：可滑动截图区 -->
+        <div class="social-screenshots">
+          <h4>📱 配图展示</h4>
+          <div class="screenshot-scroll" id="socialScroll">
+            <div class="screenshot-item"><img src="%E7%BA%A2%E8%96%AF/%E5%90%8E-%E5%B8%96%E5%AD%90.jpg" alt="高流量笔记整体页面" onerror="this.outerHTML='<div class=placeholder-box>高流量笔记 — 整体页面截图</div>'"></div>
+            <div class="screenshot-item"><img src="%E7%BA%A2%E8%96%AF/%E5%89%8D-%E5%B8%96%E5%AD%90.jpg" alt="早期笔记完整页面" onerror="this.outerHTML='<div class=placeholder-box>早期笔记 — 完整页面截图</div>'"></div>
+            <div class="screenshot-item"><img src="%E7%BA%A2%E8%96%AF/%E5%90%8E-%E5%B0%81%E9%9D%A2%E5%9B%BE.jpg" alt="高流量笔记封面" onerror="this.outerHTML='<div class=placeholder-box>高流量笔记 — 封面截图</div>'"></div>
+            <div class="screenshot-item"><img src="%E7%BA%A2%E8%96%AF/%E5%89%8D-%E5%B0%81%E9%9D%A2%E5%9B%BE.jpg" alt="早期笔记封面" onerror="this.outerHTML='<div class=placeholder-box>早期笔记 — 封面截图</div>'"></div>
+            <div class="screenshot-item"><img src="%E7%BA%A2%E8%96%AF/%E5%90%8E-%E6%95%B0%E6%8D%AE.jpg" alt="高流量笔记后台数据" onerror="this.outerHTML='<div class=placeholder-box>高流量笔记 — 后台数据截图</div>'"></div>
+            <div class="screenshot-item"><img src="%E7%BA%A2%E8%96%AF/%E5%89%8D-%E6%95%B0%E6%8D%AE.jpg" alt="早期笔记后台数据" onerror="this.outerHTML='<div class=placeholder-box>早期笔记 — 后台数据截图</div>'"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- (2) 设计排版 - 公众号推文1 -->
+    <div class="sub-module" id="article1">
+      <h3><i class="fas fa-paint-brush"></i> 设计排版 · 公众号推文</h3>
+      <div class="article-layout">
+        <div class="article-intro">
+          <h4>《前路灯塔 | 世界史学习经验分享》</h4>
+          <p>以访谈形式分享世界史专业的学习方法、时间管理与备考经验，主要面向校内历史专业师生人群。</p>
+          <p><strong>排版思路：</strong>简约清爽的问答式风格，搭配柔和暖黄与浅绿配色。</p>
+          <p><strong>阅读量：</strong>496 ｜ 获得师生正向反馈，风格清新易读。</p>
+          <p style="margin-top:12px;font-size:0.85rem;color:var(--text-light);">
+            📎 长图文件：世界史采访.png
+          </p>
+        </div>
+        <div class="article-preview">
+          <div class="phone-frame">
+            <div class="phone-screen scrollable" id="article1Screen">
+              <div class="placeholder-content">
+                推文长图预览<br><small>请将「世界史采访.png」放入 images/articles/ 文件夹</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- (3) 文案写作 — 双列布局 -->
+    <div class="sub-module" id="article2">
+      <h3><i class="fas fa-pen-fancy"></i> 文案写作</h3>
+      <p class="article-main-title">文案写作能力展示</p>
+      <div class="article-dual">
+
+        <!-- 左卡片：公众号推文（保留手机预览框） -->
+        <div class="article-card">
+          <h4><i class="fas fa-newspaper"></i> 校园活动宣传推文</h4>
+          <div class="article-card-body">
+            <p class="article-card-title">《前路灯塔 | 保研、考研经验分享会回顾》</p>
+            <p>围绕校园活动展开，采用清晰的板块式结构与轻松活泼的叙事方式，分模块呈现学长学姐的备考经验。</p>
+            <p><strong>写作思路：</strong>语言风格亲切易懂，旨在传递备考信息、帮助同学缓解焦虑。</p>
+            <p><strong>阅读量：</strong>612 ｜ 获得大量收藏与留言咨询，对后续活动宣传起到良好预热效果。</p>
+          </div>
+          <div class="article-card-preview">
+            <div class="phone-frame">
+              <div class="phone-screen scrollable" id="article2Screen">
+                <div class="placeholder-content">
+                  推文长图预览<br><small>请将「保研考研分享.png」放入 images/articles/ 文件夹</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右卡片：史学论文写作（摘要折叠） -->
+        <div class="article-card">
+          <h4>📝 文案写作 · 史学论文写作</h4>
+          <div class="article-card-body">
+            <p class="article-card-title">《法国民法典》的司法实践与国家治理</p>
+            <p class="article-meta">武汉大学历史学院世界史专业学年论文 ｜ 2025—2026学年第一学期</p>
+            <div class="article-tags">
+              <span class="tag">#世界史研究</span>
+              <span class="tag">#跨学科写作</span>
+              <span class="tag">#学术论文</span>
+            </div>
+
+            <p class="article-summary">本文以1804年《法国民法典》为核心，横跨史学与法学双领域，从司法实践、国家制度、公共秩序三大维度，探究法典对法国近代化转型与国家治理的深远影响。</p>
+
+            <button class="btn btn-detail" onclick="openPaperDetail()">
+              <i class="fas fa-book-open"></i> 查看详情
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- (4) 拍摄剪辑 -->
+    <div class="sub-module" id="photo-video">
+      <h3><i class="fas fa-camera-retro"></i> 拍摄剪辑</h3>
+
+      <!-- ① 旅游照片相册 -->
+      <div class="album-section">
+        <h4>📸 旅游照片相册</h4>
+        <p style="text-align:center;color:var(--text-gray);font-size:0.9rem;margin-bottom:16px;">
+          共 21 张精选旅游照片，点击封面展开查看
+        </p>
+        <div class="album-container" id="albumContainer">
+          <!-- 相册封面 -->
+          <div class="album-cover" id="albumCover" onclick="openAlbum()">
+            <i class="fas fa-images"></i>
+            <span>点击打开相册</span>
+          </div>
+          <!-- 相册内容（初始隐藏） -->
+          <div class="album-viewer hidden" id="albumViewer">
+            <button class="album-close" onclick="closeAlbum()">✕ 关闭</button>
+            <div class="album-display">
+              <button class="album-nav album-prev" onclick="prevPhoto()">◀</button>
+              <div class="album-photo" id="albumPhoto">
+                <div class="placeholder-box">照片加载中...</div>
+              </div>
+              <button class="album-nav album-next" onclick="nextPhoto()">▶</button>
+            </div>
+            <div class="album-counter" id="albumCounter">1 / 21</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ② 视频作品 -->
+      <div class="video-section">
+        <h4>🎬 视频作品</h4>
+        <p style="text-align:center;color:var(--text-gray);font-size:0.9rem;margin-bottom:14px;">
+          使用 Pr 软件剪辑完成
+        </p>
+        <div class="album-viewer">
+          <div class="album-display">
+            <button class="album-nav album-prev" onclick="prevVideo()">◀</button>
+            <div class="video-stage">
+              <h5 class="video-title" id="videoTitle">九环白玉蹀躞带</h5>
+              <video id="mainVideo" controls class="video-player" preload="metadata">
+                <source src="%E4%B9%9D%E7%8E%AF%E7%99%BD%E7%8E%89%E8%B9%80%E8%BA%9E%E5%B8%A6.mp4" type="video/mp4">
+                您的浏览器不支持视频播放，请升级浏览器。
+              </video>
+            </div>
+            <button class="album-nav album-next" onclick="nextVideo()">▶</button>
+          </div>
+          <div class="album-counter" id="videoCounter">1 / 2</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部导航按钮 -->
+    <div class="bottom-nav">
+      <button class="btn btn-back" onclick="navigateTo('toc')">
+        <i class="fas fa-arrow-left"></i> 返回目录
+      </button>
+      <button class="btn btn-next" onclick="navigateTo('module3')">
+        下一章节：其他 <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--  5. 模块3：其他                                              -->
+  <!-- ============================================================ -->
+  <section id="module3" class="page module-page">
+    <h2 class="section-title">💖 其他</h2>
+
+    <!-- (1) 志愿活动 -->
+    <div class="sub-module" id="volunteer">
+      <h3><i class="fas fa-hand-holding-heart"></i> 志愿活动</h3>
+      <div class="volunteer-content">
+        <p class="volunteer-intro">
+          作为<strong>入党积极分子</strong>，在<strong>阿克苏、成都、武汉</strong>等地累计参与志愿服务<strong>超50小时</strong>。工作涵盖志愿讲解、会展布置及校内服务，在多元实践中锻炼了扎实的沟通协调能力。
+        </p>
+        <div class="certificate-gallery">
+          <div class="certificate-card" onclick="zoomImage(this)">
+            <img src="%E5%9C%86%E6%BB%A1%E5%AE%B6%E6%97%8F.jpg" alt="志愿证书 圆满家族" onerror="this.outerHTML='<div class=placeholder-box>📜 志愿证书 1<br><small>（圆满家族.jpg）</small></div>'">
+          </div>
+          <div class="certificate-card" onclick="zoomImage(this)">
+            <img src="%E5%BF%97%E6%84%BF%E6%B1%87.jpg" alt="志愿证书 志愿汇" onerror="this.outerHTML='<div class=placeholder-box>📜 志愿证书 2<br><small>（志愿汇.jpg）</small></div>'">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- (2) 游戏/二次元爱好者 -->
+    <div class="sub-module" id="game-anime">
+      <h3><i class="fas fa-gamepad"></i> 游戏 & 次元世界漫游者</h3>
+      <p style="text-align:center;color:var(--text-mid);margin-bottom:20px;line-height:1.8;">
+        平时喜欢玩<strong>原神、崩坏：星穹铁道、恋与深空、星露谷、胡闹厨房、PEAK、王者荣耀</strong>等多款游戏，深耕二次元圈层，熟悉圈层文化与用户互动模式，享受游戏与二次元文化带来的快乐。
+      </p>
+      <div class="hobby-gallery">
+        <div class="hobby-card">
+          <img src="%E6%B8%B8%E6%88%8F%E7%85%A7%E7%89%87/Honkai_%20Star%20Rail%202025_4_11%2018_08_55.png" alt="崩坏：星穹铁道" onerror="this.outerHTML='<div class=placeholder-box placeholder-sm>崩坏：星穹铁道</div>'">
+          <span>崩坏：星穹铁道</span>
+        </div>
+        <div class="hobby-card">
+          <img src="%E6%B8%B8%E6%88%8F%E7%85%A7%E7%89%87/Honkai_%20Star%20Rail%202025_4_11%2022_15_28.png" alt="崩坏：星穹铁道" onerror="this.outerHTML='<div class=placeholder-box placeholder-sm>崩坏：星穹铁道</div>'">
+          <span>崩坏：星穹铁道</span>
+        </div>
+        <div class="hobby-card">
+          <img src="%E6%B8%B8%E6%88%8F%E7%85%A7%E7%89%87/StarRail_Image_1745068034.png" alt="星穹铁道" onerror="this.outerHTML='<div class=placeholder-box placeholder-sm>星穹铁道</div>'">
+          <span>星穹铁道</span>
+        </div>
+        <div class="hobby-card">
+          <img src="%E6%B8%B8%E6%88%8F%E7%85%A7%E7%89%87/StarRail_Image_1748711124.png" alt="星穹铁道" onerror="this.outerHTML='<div class=placeholder-box placeholder-sm>星穹铁道</div>'">
+          <span>星穹铁道</span>
+        </div>
+        <div class="hobby-card">
+          <img src="%E6%B8%B8%E6%88%8F%E7%85%A7%E7%89%87/Stardew%20Valley%202026_2_4%2023_25_11.png" alt="星露谷" onerror="this.outerHTML='<div class=placeholder-box placeholder-sm>星露谷</div>'">
+          <span>星露谷</span>
+        </div>
+        <div class="hobby-card">
+          <img src="%E6%B8%B8%E6%88%8F%E7%85%A7%E7%89%87/Stardew%20Valley%202026_2_13%2020_34_19.png" alt="星露谷" onerror="this.outerHTML='<div class=placeholder-box placeholder-sm>星露谷</div>'">
+          <span>星露谷</span>
+        </div>
+        <div class="hobby-card">
+          <img src="%E6%B8%B8%E6%88%8F%E7%85%A7%E7%89%87/PEAK%202026_1_27%2023_21_28.png" alt="PEAK" onerror="this.outerHTML='<div class=placeholder-box placeholder-sm>PEAK</div>'">
+          <span>PEAK</span>
+        </div>
+        <div class="hobby-card">
+          <img src="%E6%B8%B8%E6%88%8F%E7%85%A7%E7%89%87/Journey%20(D3D11)%20(x64)%202026_4_8%2021_43_37.png" alt="Journey" onerror="this.outerHTML='<div class=placeholder-box placeholder-sm>Journey</div>'">
+          <span>Journey</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- (3) 音乐爱好者 -->
+    <div class="sub-module" id="music">
+      <h3><i class="fas fa-music"></i> 旋律收藏家</h3>
+      <div class="music-layout">
+        <!-- 左侧旋转唱片 -->
+        <div class="record-player">
+          <div class="record" id="record">
+            <div class="record-disc"></div>
+            <div class="record-label"></div>
+          </div>
+        </div>
+        <!-- 右侧歌曲列表 -->
+        <div class="song-list">
+          <h4>🎵 我的歌单（8首）</h4>
+          <ul id="playlist">
+            <li class="song-item" data-src="Music/%E6%A0%BC%E5%BC%8F%E4%BA%92%E8%BD%AC%E5%B7%A5%E5%8E%82/HistoryMaker.mp3" data-name="History Maker - 藤冈靛" onclick="playSong(this)"><i class="fas fa-play"></i><span>History Maker — 藤冈靛</span></li>
+            <li class="song-item" data-src="Music/%E6%A0%BC%E5%BC%8F%E4%BA%92%E8%BD%AC%E5%B7%A5%E5%8E%82/HowLongHowLow.mp3" data-name="How Long, How Low? - Chance Peña/Hayd" onclick="playSong(this)"><i class="fas fa-play"></i><span>How Long, How Low? — Chance Peña/Hayd</span></li>
+            <li class="song-item" data-src="Music/%E6%A0%BC%E5%BC%8F%E4%BA%92%E8%BD%AC%E5%B7%A5%E5%8E%82/HEARTSTATION.mp3" data-name="HEART STATION - 宇多田光" onclick="playSong(this)"><i class="fas fa-play"></i><span>HEART STATION — 宇多田光</span></li>
+            <li class="song-item" data-src="Music/%E6%A0%BC%E5%BC%8F%E4%BA%92%E8%BD%AC%E5%B7%A5%E5%8E%82/Alive.mp3" data-name="Alive - Blue" onclick="playSong(this)"><i class="fas fa-play"></i><span>Alive — Blue</span></li>
+            <li class="song-item" data-src="Music/%E6%A0%BC%E5%BC%8F%E4%BA%92%E8%BD%AC%E5%B7%A5%E5%8E%82/LAHallucinations.mp3" data-name="LA Hallucinations - Carly Rae Jepsen" onclick="playSong(this)"><i class="fas fa-play"></i><span>LA Hallucinations — Carly Rae Jepsen</span></li>
+            <li class="song-item" data-src="Music/%E6%A0%BC%E5%BC%8F%E4%BA%92%E8%BD%AC%E5%B7%A5%E5%8E%82/%E6%83%B3%E4%BD%A0%E7%9A%84%E6%97%B6%E9%97%B4.mp3" data-name="想你的时间 (Drawing Our Moments) - 太妍" onclick="playSong(this)"><i class="fas fa-play"></i><span>想你的时间 (Drawing Our Moments) — 太妍</span></li>
+            <li class="song-item" data-src="Music/%E6%A0%BC%E5%BC%8F%E4%BA%92%E8%BD%AC%E5%B7%A5%E5%8E%82/GoodToSeeYou.mp3" data-name="Good To See You - John Splithoff" onclick="playSong(this)"><i class="fas fa-play"></i><span>Good To See You — John Splithoff</span></li>
+            <li class="song-item" data-src="Music/%E6%A0%BC%E5%BC%8F%E4%BA%92%E8%BD%AC%E5%B7%A5%E5%8E%82/SingMyPleasure.mp3" data-name="Sing My Pleasure - 八木海莉" onclick="playSong(this)"><i class="fas fa-play"></i><span>Sing My Pleasure — 八木海莉</span></li>
+          </ul>
+          <!-- 音频播放器 -->
+          <audio id="audioPlayer" controls preload="none">
+            您的浏览器不支持音频播放。
+          </audio>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部导航按钮 -->
+    <div class="bottom-nav">
+      <button class="btn btn-back" onclick="navigateTo('toc')">
+        <i class="fas fa-arrow-left"></i> 返回目录
+      </button>
+      <button class="btn btn-next" onclick="navigateTo('thanks')">
+        下一章节：感谢观看 <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--  6. 感谢观看页 (Thank You Page)                              -->
+  <!-- ============================================================ -->
+  <section id="thanks" class="page thanks-page">
+    <div class="thanks-content">
+      <h2 class="thanks-title">🌸 感谢观看 🌸</h2>
+      <p class="thanks-message">感谢您花时间了解我，期待与您的进一步交流</p>
+
+      <!-- 联系方式 -->
+      <div class="thanks-contact">
+        <h3>联系方式</h3>
+        <p><i class="fas fa-user"></i> 姓名：赵铭兮</p>
+        <p><i class="fas fa-envelope"></i> 邮箱：2031695159@qq.com</p>
+        <p><i class="fas fa-phone"></i> 电话：177-9826-2749</p>
+        <p><i class="fas fa-graduation-cap"></i> 武汉大学 · 世界史 · 2027届</p>
+      </div>
+
+      <!-- 求职寄语 -->
+      <p class="thanks-quote">「保持热爱，奔赴山海——脚踏实地，也仰望星空。」</p>
+
+      <!-- 返回目录 -->
+      <button class="btn btn-back" onclick="navigateTo('toc')">
+        <i class="fas fa-arrow-left"></i> 返回目录
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--  图片放大查看遮罩层                                          -->
+  <!-- ============================================================ -->
+  <div class="overlay hidden" id="imageOverlay" onclick="closeZoom()">
+    <span class="overlay-close">✕</span>
+    <div class="overlay-content" id="overlayContent"></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!--  论文详情弹窗                                                  -->
+  <!-- ============================================================ -->
+  <div class="modal-overlay hidden" id="paperModal" onclick="closePaperDetail()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closePaperDetail()">✕</button>
+
+      <h3 class="modal-title">📝 《法国民法典》的司法实践与国家治理</h3>
+      <p class="modal-meta">武汉大学历史学院世界史专业学年论文 ｜ 2025—2026学年第一学期</p>
+      <div class="article-tags">
+        <span class="tag">#世界史研究</span>
+        <span class="tag">#跨学科写作</span>
+        <span class="tag">#学术论文</span>
+      </div>
+
+      <p class="article-section-title">内容简介</p>
+      <p>本文以1804年《法国民法典》为核心研究对象，结合19世纪法国社会转型背景，横跨史学与法学双领域，从司法实践原则、国家制度建构、公共秩序塑造三大维度展开论述。文章梳理了法典在司法应用中的演进逻辑，剖析其如何借助身份制度、财产规则、责任原则重构近代法国社会秩序；同时结合商贸发展、公共教育、文艺传播等社会场景，论证法典从保障个人自由到防控社会风险、完善公共服务的价值演变。研究打破法学与史学的研究壁垒，依托中外文献、经典著作与学术观点，综合运用史料考证、文本分析、跨学科研究方法，探究法典作为近代资本主义法典里程碑，对法国近代化转型与国家治理的深远影响。</p>
+
+      <p class="article-section-title">研究亮点</p>
+      <p>1. 跨学科研究，融合世界史、法律史知识完成文史法交叉写作；2. 熟练运用史料考证、文本分析等史学研究方法，恪守学术写作规范；3. 全文逻辑架构清晰，论证严谨，聚焦法律与社会的互动关系展开创新研究。</p>
+
+      <div class="article-pdf-link">
+        <a href="./%E6%B3%95%E5%9B%BD%E6%B0%91%E6%B3%95%E5%85%B8%E7%9A%84%E5%8F%B8%E6%B3%95%E5%AE%9E%E8%B7%B5%E4%B8%8E%E5%9B%BD%E5%AE%B6%E6%B2%BB%E7%90%86.pdf" target="_blank">
+          <i class="fas fa-file-pdf"></i> 附件：《法国民法典》的司法实践与国家治理.pdf
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 自定义脚本 -->
+  <script src="script.js"></script>
+</body>
+</html>

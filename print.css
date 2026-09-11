@@ -1,0 +1,152 @@
+/* ============================================================
+   PDF 导出打印样式（仅在打印 / 导出 PDF 时生效）
+   配合 index.html?pdf=xxx 参数使用（body 会带上 pdf-mode 类）
+   所有 PDF 统一 A4 竖版规格
+   ============================================================ */
+
+/* 页面规格：A4 竖版 */
+@page {
+  size: A4 portrait;
+  margin: 12mm;
+}
+
+@media print {
+
+  /* ---------- 保留背景色与卡片质感 ---------- */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ---------- 关闭所有动画/过渡（防止目录卡片停留在初始隐藏状态） ---------- */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  body {
+    /* 固定背景改为随内容延伸的柔和渐变 */
+    background: linear-gradient(180deg, #fffbe8 0%, #f2fbfc 40%, #e3f6f9 100%) !important;
+    background-attachment: scroll !important;
+    min-height: 0 !important;
+  }
+
+  /* ---------- 隐藏装饰层与交互元素 ---------- */
+  .bg-texture,
+  .floating-orb,
+  .decorations,
+  .bottom-nav,
+  .overlay,
+  .modal-overlay,
+  #audioPlayer,
+  .album-nav,
+  .album-close {
+    display: none !important;
+  }
+
+  /* ---------- 只打印当前激活的页面 ---------- */
+  .page:not(.active) {
+    display: none !important;
+  }
+
+  /* ---------- 目录卡片：打印时直接显示 ---------- */
+  .toc-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* 目录页：单列居中，更适合纸张阅读 */
+  .toc-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 420px !important;
+  }
+
+  /* ---------- 封面/感谢页：占满一页且垂直居中 ---------- */
+  body.pdf-mode .cover-page.active,
+  body.pdf-mode .thanks-page.active {
+    min-height: 250mm !important;
+  }
+
+  /* ---------- 解除滚动区域高度限制，让内容全部展开 ---------- */
+  .analysis-scroll,
+  .screenshot-scroll,
+  .phone-screen,
+  #playlist {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .phone-screen .placeholder-content {
+    min-height: 0 !important;
+  }
+
+  /* ---------- 手机预览框：高度自适应，完整展示长图 ---------- */
+  .phone-frame {
+    height: auto !important;
+    width: 440px !important;
+  }
+
+  /* ---------- 双栏布局改为上下堆叠，避免打印时挤压 ---------- */
+  .social-media-content,
+  .article-layout,
+  .article-dual,
+  .music-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ---------- 社媒截图：2 列网格铺开 ---------- */
+  .screenshot-scroll {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+
+  /* ---------- 避免小卡片被拦腰截断 ---------- */
+  .sub-module,
+  .skill-card,
+  .analysis-item,
+  .article-card,
+  .article-intro,
+  .toc-card,
+  .certificate-card,
+  .screenshot-item,
+  .info-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* ---------- 视频截图占位图样式 ---------- */
+  /* 限制最大宽高：竖屏视频画面也能完整放进一页 A4 */
+  .video-frame-img {
+    width: auto;
+    height: auto;
+    max-width: 620px;
+    max-height: 560px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* 视频页：隐藏模块大标题，整块内容稳定放进一页 */
+  body[data-pdf^="video"] .section-title {
+    display: none !important;
+  }
+
+  /* 视频页：flex 容器改为块级布局，避免分页时画面被挤到下一页 */
+  body[data-pdf^="video"] .album-display {
+    display: block !important;
+  }
+
+  body[data-pdf^="video"] .video-stage {
+    max-width: 100% !important;
+  }
+
+  /* ---------- 导出模式下不需要的部分（JS 也会处理，这里兜底） ---------- */
+  body.pdf-mode .album-section,
+  body.pdf-mode .article-main-title,
+  body.pdf-mode .video-section .album-counter {
+    display: none !important;
+  }
+}
