@@ -5,8 +5,8 @@
 
 // ---------- 全局状态 ----------
 let currentPage = null;          // 当前显示的页面 ID
-let albumOpen = false;          // 相册是否打开
 let currentPhotoIndex = 0;      // 当前照片索引
+let albumTimer = null;          // 相册自动轮播计时器
 let currentAudio = null;        // 当前播放的歌曲元素
 
 // 旅游照片列表（相对路径：旅游照片/）
@@ -104,27 +104,38 @@ function resetTocCards() {
 }
 
 // ============================================================
-//  相册功能
+//  相册功能（进入页面即展示，每 1 秒自动轮播 + 左右滑动）
 // ============================================================
 
-/**
- * 打开相册
- */
-function openAlbum() {
-  document.getElementById('albumCover').classList.add('hidden');
-  document.getElementById('albumViewer').classList.remove('hidden');
-  albumOpen = true;
-  currentPhotoIndex = 0;
-  showPhoto(0);
+/** 自动轮播间隔（毫秒）：每 1 秒切换下一张 */
+const ALBUM_AUTO_INTERVAL = 1000;
+
+/** 相册当前是否在可见页面中（隐藏时暂停轮播，避免无意义刷新） */
+function isAlbumVisible() {
+  const viewer = document.getElementById('albumViewer');
+  return !!viewer && viewer.offsetParent !== null;
 }
 
 /**
- * 关闭相册
+ * 启动自动轮播（先停止旧计时器，保证只有一个计时器在跑）
  */
-function closeAlbum() {
-  document.getElementById('albumViewer').classList.add('hidden');
-  document.getElementById('albumCover').classList.remove('hidden');
-  albumOpen = false;
+function startAlbumAutoPlay() {
+  stopAlbumAutoPlay();
+  albumTimer = setInterval(function() {
+    if (isAlbumVisible()) {
+      nextPhoto();
+    }
+  }, ALBUM_AUTO_INTERVAL);
+}
+
+/**
+ * 停止自动轮播
+ */
+function stopAlbumAutoPlay() {
+  if (albumTimer) {
+    clearInterval(albumTimer);
+    albumTimer = null;
+  }
 }
 
 /**
@@ -141,9 +152,12 @@ function showPhoto(index) {
   // 尝试加载真实图片
   const img = new Image();
   img.onload = function() {
+    // 自动轮播期间可能已切换到其他照片，过期加载结果直接丢弃
+    if (currentPhotoIndex !== index) return;
     photoDiv.innerHTML = '<img src="' + photoPath + '" alt="旅游照片 ' + (index + 1) + '" style="width:100%;max-height:400px;object-fit:contain;border-radius:12px;">';
   };
   img.onerror = function() {
+    if (currentPhotoIndex !== index) return;
     // 图片不存在，显示占位提示
     photoDiv.innerHTML = '<div class="placeholder-box">📷 照片 ' + (index + 1) + '<br><small>请将图片放入 ' + photoPath + '</small></div>';
   };
@@ -156,7 +170,6 @@ function showPhoto(index) {
  * 上一张照片
  */
 function prevPhoto() {
-  if (!albumOpen) return;
   currentPhotoIndex = (currentPhotoIndex - 1 + totalPhotos) % totalPhotos;
   showPhoto(currentPhotoIndex);
 }
@@ -165,9 +178,58 @@ function prevPhoto() {
  * 下一张照片
  */
 function nextPhoto() {
-  if (!albumOpen) return;
   currentPhotoIndex = (currentPhotoIndex + 1) % totalPhotos;
   showPhoto(currentPhotoIndex);
+}
+
+/**
+ * 手动切换照片后重置自动轮播计时，
+ * 避免刚滑动完 1 秒内立刻又自动跳走
+ */
+function onManualPhotoChange() {
+  startAlbumAutoPlay();
+}
+
+/**
+ * 绑定左右滑动切换（同时支持触屏滑动与鼠标拖动）
+ */
+function initAlbumSwipe() {
+  const photoArea = document.getElementById('albumPhoto');
+  if (!photoArea) return;
+
+  let startX = 0;
+  let startY = 0;
+  let swiping = false;
+
+  photoArea.addEventListener('pointerdown', function(e) {
+    swiping = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    // 捕获指针：手指/鼠标滑出照片区域也能收到抬起事件
+    try { photoArea.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+
+  photoArea.addEventListener('pointerup', function(e) {
+    if (!swiping) return;
+    swiping = false;
+
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    // 水平位移超过 40px 且大于垂直位移，才判定为滑动切换
+    if (Math.abs(dx) < 40 || Math.abs(dx) <= Math.abs(dy)) return;
+
+    if (dx < 0) {
+      nextPhoto();   // 向左滑 → 下一张
+    } else {
+      prevPhoto();   // 向右滑 → 上一张
+    }
+    onManualPhotoChange();
+  });
+
+  // 手势被系统接管（如转为上下滚动）时结束滑动状态
+  photoArea.addEventListener('pointercancel', function() {
+    swiping = false;
+  });
 }
 
 // ============================================================
@@ -402,6 +464,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // 3. 尝试加载公众号推文长图
   loadArticleImage('article1Screen', '%E4%B8%96%E7%95%8C%E5%8F%B2%E9%87%87%E8%AE%BF.png');
   loadArticleImage('article2Screen', '%E4%BF%9D%E7%A0%94%E8%80%83%E7%A0%94%E5%88%86%E4%BA%AB.png');
+
+  // 4. 初始化相册：直接展示第 1 张照片，启动自动轮播与滑动切换
+  //    （PDF 导出模式无需轮播，跳过初始化）
+  if (!new URLSearchParams(window.location.search).get('pdf')) {
+    showPhoto(0);
+    startAlbumAutoPlay();
+    initAlbumSwipe();
+  }
 });
 
 // ============================================================

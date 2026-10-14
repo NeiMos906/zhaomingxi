@@ -49,7 +49,7 @@
   <!-- ============================================================ -->
   <section id="toc" class="page toc-page">
     <h2 class="section-title">📋 目录</h2>
-    <p class="section-subtitle">选择你想了解的模块（图片视频加载较慢）</p>
+    <p class="section-subtitle">选择你想了解的模块</p>
 
     <div class="toc-grid">
       <!-- 模块1 -->
@@ -100,7 +100,7 @@
       <div class="profile-info profile-right">
         <div class="info-item"><span class="info-label">毕业时间</span><span class="info-value">2027年06月</span></div>
         <div class="info-item"><span class="info-label">电话</span><span class="info-value">177-9826-2749</span></div>
-        <div class="info-item"><span class="info-label">邮箱</span><span class="info-value">2031695159@qq.com</span></div>
+        <div class="info-item"><span class="info-label">邮箱</span><span class="info-value">2023301121068@whu.edu.cn</span></div>
       </div>
     </div>
 
@@ -275,23 +275,13 @@
       <div class="album-section">
         <h4>📸 旅游照片相册</h4>
         <p style="text-align:center;color:var(--text-gray);font-size:0.9rem;margin-bottom:16px;">
-          共 21 张精选旅游照片，点击封面展开查看
+          共 21 张精选旅游照片，每 1 秒自动切换 · 左右滑动可手动浏览
         </p>
         <div class="album-container" id="albumContainer">
-          <!-- 相册封面 -->
-          <div class="album-cover" id="albumCover" onclick="openAlbum()">
-            <i class="fas fa-images"></i>
-            <span>点击打开相册</span>
-          </div>
-          <!-- 相册内容（初始隐藏） -->
-          <div class="album-viewer hidden" id="albumViewer">
-            <button class="album-close" onclick="closeAlbum()">✕ 关闭</button>
-            <div class="album-display">
-              <button class="album-nav album-prev" onclick="prevPhoto()">◀</button>
-              <div class="album-photo" id="albumPhoto">
-                <div class="placeholder-box">照片加载中...</div>
-              </div>
-              <button class="album-nav album-next" onclick="nextPhoto()">▶</button>
+          <!-- 相册轮播（进入页面即展示，自动播放 + 左右滑动切换） -->
+          <div class="album-viewer album-photo-viewer" id="albumViewer">
+            <div class="album-photo" id="albumPhoto">
+              <div class="placeholder-box">照片加载中...</div>
             </div>
             <div class="album-counter" id="albumCounter">1 / 21</div>
           </div>
@@ -453,7 +443,7 @@
       <div class="thanks-contact">
         <h3>联系方式</h3>
         <p><i class="fas fa-user"></i> 姓名：赵铭兮</p>
-        <p><i class="fas fa-envelope"></i> 邮箱：2031695159@qq.com</p>
+        <p><i class="fas fa-envelope"></i> 邮箱：2023301121068@whu.edu.cn</p>
         <p><i class="fas fa-phone"></i> 电话：177-9826-2749</p>
         <p><i class="fas fa-graduation-cap"></i> 武汉大学 · 世界史 · 2027届</p>
       </div>

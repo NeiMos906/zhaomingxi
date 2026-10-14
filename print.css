@@ -41,8 +41,7 @@
   .overlay,
   .modal-overlay,
   #audioPlayer,
-  .album-nav,
-  .album-close {
+  .album-nav {
     display: none !important;
   }
 

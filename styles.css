@@ -1141,40 +1141,6 @@ body {
   text-align: center;
 }
 
-/* 相册封面 */
-.album-cover {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  padding: 44px 68px;
-  background: var(--white-75);
-  border: 3px dashed var(--mint);
-  border-radius: var(--radius-xl);
-  cursor: pointer;
-  transition: var(--transition);
-  color: var(--text-gray);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.album-cover:hover {
-  background: var(--white-85);
-  border-color: var(--mint-dark);
-  box-shadow: var(--shadow);
-  transform: scale(1.02);
-}
-
-.album-cover i {
-  font-size: 3.2rem;
-  color: var(--mint);
-  transition: var(--transition);
-}
-
-.album-cover:hover i {
-  transform: rotate(-5deg) scale(1.1);
-}
-
 /* 相册查看器 */
 .album-viewer {
   position: relative;
@@ -1183,25 +1149,6 @@ body {
   border-radius: var(--radius-xl);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-}
-
-.album-close {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  background: rgba(0,0,0,0.05);
-  border: none;
-  font-size: 0.95rem;
-  cursor: pointer;
-  color: var(--text-gray);
-  transition: var(--transition);
-  padding: 6px 14px;
-  border-radius: 20px;
-}
-
-.album-close:hover {
-  background: #ffe0e0;
-  color: #d63031;
 }
 
 .album-display {
@@ -1241,6 +1188,25 @@ body {
 
 .album-photo .placeholder-box {
   min-height: 300px;
+}
+
+/* 自动轮播：照片区居中，支持左右滑动/拖动 */
+.album-photo-viewer .album-photo {
+  max-width: 500px;
+  margin: 0 auto;
+  cursor: grab;
+  touch-action: pan-y;           /* 保留上下滚动，横向手势交给滑动切换 */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.album-photo-viewer .album-photo:active {
+  cursor: grabbing;
+}
+
+/* 图片本身不响应指针，避免拖动图片干扰滑动手势 */
+.album-photo-viewer .album-photo img {
+  pointer-events: none;
 }
 
 .album-counter {
@@ -1847,10 +1813,6 @@ body {
     height: 360px;
   }
 
-  .album-cover {
-    padding: 32px 40px;
-  }
-
   .album-display {
     gap: 8px;
   }
@@ -1916,9 +1878,5 @@ body {
   .profile-avatar {
     width: 130px;
     height: 130px;
-  }
-
-  .album-cover {
-    padding: 24px 30px;
   }
 }
